@@ -20,7 +20,6 @@ my_sim/
   run_sim.R             runs the simulation study
   myfun.R               one Monte Carlo replicate
   compare_estimators.R  the 15 compared estimators
-iCF/                    iCF scripts (Wang et al., 2024) used by ICF.R
 ```
 
 ## Requirements
@@ -31,6 +30,21 @@ R (>= 4.3) with
 - `SuperLearner`, `xgboost`, `gam`, `mgcv`, `grf`, `rpart`, `partykit`, `CRE`, `MASS`, `aricode`, `doFuture`
 - `causalTree`: `remotes::install_github("susanathey/causalTree")`
 - for iCF: `glmnet`, `dplyr`, `rlang`, `rlist`, `tidyverse`, `caret`, `knitr`, `cowplot`, `ggridges`
+
+### iCF scripts
+
+The iCF comparator uses the scripts of Wang et al. (2024), which are not included in this repository. Download them from <https://github.com/tianshengwang/iCF> and copy the following files from its `R/` folder into a folder named `iCF/` at the top level of this repository:
+
+```
+best_tree_MSegar.R        iCF_SUBGROUP_ANALYSIS.R
+iCF_CV.R                  iCF_SUBGROUP_DECISION.R
+iCF_GG_toolbox.R          iCF_SUBGROUP_MODEL.R
+iCF_MAJORITY_VOTE.R       iCF_SUBGROUP_PIPELINE.R
+iCF_PARENT_node.R         iCF_TREE_build.R
+iCF_PRE_majority.R        sim_Truth_tree.R
+```
+
+These scripts are only needed for the iCF comparator; IDR-Learner and the other estimators run without them.
 
 ## Using IDR-Learner
 
@@ -81,4 +95,4 @@ results$relmse <- results$mse / results$true.cate.var
 
 ## Acknowledgements
 
-The scripts in `iCF/` come from the iterative causal forest repository of Wang et al. (<https://github.com/tianshengwang/iCF>; *American Journal of Epidemiology*, 2024). They are included only to run the iCF comparator.
+The iCF comparator relies on the iterative causal forest implementation of Wang et al. (<https://github.com/tianshengwang/iCF>; *American Journal of Epidemiology*, 2024).
