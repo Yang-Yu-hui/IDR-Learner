@@ -4,8 +4,6 @@ Simulation code for
 
 > Y. Yang et al., "IDR-Learner: Interpretable Doubly Robust Subgroup Discovery in Observational Biomedical Data."
 
-IDR-Learner fits change surface regression (CSurf; Liu, Li and Li, *Biometrics*, 2025) directly to cross-fitted doubly robust (AIPW) pseudo-outcomes. It returns patient-level CATE estimates together with an interpretable subgroup rule.
-
 ## Repository layout
 
 ```
@@ -92,7 +90,3 @@ files   <- list.files("results", pattern = "\\.rds$", recursive = TRUE, full.nam
 results <- do.call(rbind, lapply(files, readRDS))
 results$relmse <- results$mse / results$true.cate.var
 ```
-
-## Acknowledgements
-
-The iCF comparator relies on the iterative causal forest implementation of Wang et al. (<https://github.com/tianshengwang/iCF>; *American Journal of Epidemiology*, 2024).
